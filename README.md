@@ -1,2 +1,2 @@
 # laughing-octo-funicular
-Private repository for tryingout.
+Private repository for trying out.
