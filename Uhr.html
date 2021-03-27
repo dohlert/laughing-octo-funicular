@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<script>
+			'use strict';  
+			(function () {
+				function uhrzeit() {
+					var jetzt = new Date(),
+						h = jetzt.getHours(),
+						m = jetzt.getMinutes(),
+						mablesen = m - 15,
+						s = jetzt.getSeconds();
+					m = fuehrendeNull(m);
+					var hablesen = (mablesen < 0) ? (h - 1) : h;
+					mablesen = (mablesen < 0) ? (mablesen + 60) : mablesen;
+					mablesen = fuehrendeNull(mablesen);
+					s = fuehrendeNull(s);
+					document.getElementById('uhr').innerHTML = h + ':' + m;
+					document.getElementById('uhrablesen').innerHTML = hablesen + ':' + mablesen;
+					setTimeout(uhrzeit, 500);
+				}
+
+				function fuehrendeNull(zahl) {
+					zahl = (zahl < 10 ? '0' : '' )+ zahl;  
+					return zahl;
+				}
+				document.addEventListener('DOMContentLoaded',uhrzeit);
+			}());
+		</script>
+		<style>
+			body{
+				margin:0;
+				vertical-align:middle;
+			}
+			.figure{
+				float: right;
+				margin: 5vh;
+				width: min(28vh, 14vw);
+				height: min(40vh, 20vw);
+				position: relative;
+				text-align: center;
+				color: white;
+			}
+			p {
+				text-align: right; 
+				color: white;
+				font-family:arial, "lucida console", sans-serif;
+				font-size: min(21vh, 12.5vw);
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+			div.eintragen{
+				background-color: #900;
+				height:50%;
+			}
+			div.ablesen{
+				background-color: #090;
+				height:50%;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="eintragen">
+				<img src="eintragen.jpg" class="figure" alt="Diese Zeit muss auf dem Testzettel beim Test eingetragen werden.">
+				<p>Aktuelle Zeit:</p>
+				<p id="uhr"></p>
+			</div>
+			<div class="ablesen">
+					<img src="fertig.jpg" class="figure" alt="Wenn diese Zeit mit der auf dem Zettel übereinstimmt, kann der Test ausgewertet werden.">
+				<p>Fertige Tests:</p>
+				<p id="uhrablesen"></p>
+			</div>
+		</main>
+	</body>
+</html>
