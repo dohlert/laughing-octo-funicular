@@ -1,2 +1,2 @@
 # laughing-octo-funicular
-Private repository for trying out.
+Clock to support Covid-19 POC rapid tests.
